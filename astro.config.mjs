@@ -4,5 +4,7 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [alpinejs()]
+  site: 'https://GFGxMGMU.github.io',
+  base: '/gfgweb',
+  integrations: [alpinejs()],
 });
