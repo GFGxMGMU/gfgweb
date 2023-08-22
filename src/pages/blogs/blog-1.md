@@ -1,5 +1,5 @@
 ---
-title: "My First Blog Post"
+title: "gfgjnec"
 pubDate: 2023-08-20
 description: "Just a post."
 author: "Ayush"

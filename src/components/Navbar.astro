@@ -1,4 +1,5 @@
 ---
+const pages = await Astro.glob("../pages/blogs/*");
 ---
 
 <style>
@@ -6,9 +7,9 @@
     display: flex;
     width: 70%;
     height: 10vh;
-    background-color: #16c15584;
-    color: #c7c7c7;
-    backdrop-filter: blur(4px);
+    background-color: #2f485892;
+    color: #f6edd9;
+    backdrop-filter: blur(7px);
     position: fixed;
     top: 5vh;
     left: 50%;
@@ -17,7 +18,29 @@
     justify-content: center;
     align-items: center;
     font-size: 0.6em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.562);
+    font-weight: 800;
+    z-index: 2;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  @media only screen and (min-width: 600px) {
+    .navbar {
+      border-radius: 0;
+      margin: 0;
+      top: 0;
+    }
   }
 </style>
 
-<div class="navbar">navbar here</div>
+<div class="navbar">
+  <div class="paths">
+    {
+      pages
+        .slice(0, 3)
+        .map((page) => <a href={page.url}>{page.frontmatter.title}</a>)
+    }
+  </div>
+</div>

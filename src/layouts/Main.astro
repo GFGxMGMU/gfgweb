@@ -20,17 +20,14 @@ import Footer from "../components/Footer.astro";
       p {
         line-height: 1em;
       }
-      main {
-        display: block;
-        width: 75%;
-        min-height: 100vh;
-        height: max-content;
+      body {
         color: #f6edd9;
         margin: 0 auto;
       }
       footer {
         margin-top: auto;
         bottom: 0;
+        scroll-snap-align: center;
       }
       section {
         width: 100%;
@@ -52,16 +49,11 @@ import Footer from "../components/Footer.astro";
   </head>
   <body x-data>
     <Navbar />
-    <section>
-      <main>
-        <slot />
-      </main>
-    </section>
+    <slot />
     <footer>
       <Footer />
     </footer>
     <script>
-      window
     </script>
   </body>
 </html>

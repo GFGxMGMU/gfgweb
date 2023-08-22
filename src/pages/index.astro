@@ -1,14 +1,84 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Main from "../layouts/Main.astro";
 const pageTitle = "GFGxMGMU";
+const texts = ["(noob) => {", "legend", "}"].map((x) => x.split(""));
+const isLegend = (x) => (x === "legend")
 ---
 
 <style>
-  p {
-    font-family: "JetBrains Mono", monospace;
+  body {
+    scroll-snap-type: y mandatory;
+  }
+  .wrapper {
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+    font-size: 0.8em;
+  }
+  .code {
+    display: inline;
+  }
+  .char {
+    position: relative;
+    display: none;
+  }
+  .cursor {
+    opacity: 0;
+    animation: blink 0.35s steps(1) infinite;
+  }
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .cursor,
+  .code {
+    margin: 0;
   }
 </style>
-<BaseLayout title={pageTitle}>
-  <p class="code">def gfg(noob):</p>
-  <p class="code" style="text-indent: 1em;">return pro</p>
-</BaseLayout>
+<Main title={pageTitle}>
+  <div id="typewriter-wrapper" class="wrapper">
+    <div id="typewriter-inner">
+      {
+        texts.map((x) => (
+          <>
+            <span class="code">
+              {x.map((y) => (
+                <span class="char">{y}</span>
+              ))}
+            </span>
+            </>
+        ))
+      }
+      <span class="cursor">_</span>
+    </div>
+  </div>
+  <div class="wrapper">Intro here</div>
+  <script>
+    gsap.to(".char", { display: "inline", stagger: 0.15, duration: 0 });
+    /*
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".wrapper",
+        scrub: true,
+        markers: true,
+        start: "center center",
+        end: "bottom center",
+      },
+    });
+    tl.to(".wrapper", {
+      x: 1000,
+    });
+    */
+  </script>
+</Main>
