@@ -47,7 +47,7 @@ import Footer from "../components/Footer.astro";
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
       is:inline></script>
   </head>
-  <body x-data>
+  <body x-data client:load>
     <Navbar />
     <slot />
     <footer>
